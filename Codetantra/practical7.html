@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Information - JS and jQuery Example</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body { font-family: Verdana, sans-serif; margin: 20px; }
+        .student-info { margin-top: 15px; display: none; }
+    </style>
+</head>
+<body>
+    <h2>Enter Student Details</h2>
+    <form id="studentForm">
+        Name: <input type="text" id="name" required><br><br>
+        Roll No: <input type="text" id="rollno" required><br><br>
+        <button type="submit">Show Details</button>
+    </form>
+    <div class="student-info" id="info"></div>
+    <script>
+        // JavaScript for form validation
+        document.getElementById('studentForm').onsubmit = function(event) {
+            event.preventDefault();
+            var name = document.getElementById('name').value.trim();
+            var rollno = document.getElementById('rollno').value.trim();
+            if(name === "" || rollno === "") {
+                alert("Please fill in all fields.");
+            } else {
+                // jQuery to display student info
+                $('#info').html('<strong>Name:</strong> ' + name + '<br><strong>Roll No:</strong> ' + rollno)
+                          .slideDown("fast");
+            }
+        };
+    </script>
+</body>
+</html>
